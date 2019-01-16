@@ -99,6 +99,7 @@ input, select {
 
 body {
     background-color: #384449;
+    font-family: 'Coiny', cursive;
 }
 
 #show {
@@ -110,11 +111,44 @@ body {
 }
 
 #show div {
-    border: 1px solid #fff;
+    border: 1px solid #dff2c4;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
     font-size: 40px;
     cursor: pointer;
+}
+
+#result-div {
+    margin-top: 40px;
+    margin-left: 39vw;
+    display: none;
+}
+
+#result {
+    display: inline;
+    font-size: 30px;
+    margin-left: 30px;
+    color: #4CAF50;
+    padding: 18px 25px;
+}
+
+#restart {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    width: 150px;
+    height: 60px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    cursor: pointer;
+    transition: background-color .15s;
+    font-family: 'Coiny', cursive;
+}
+
+#restart:hover {
+    background-color: #25703b;
 }
