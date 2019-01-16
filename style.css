@@ -152,3 +152,15 @@ body {
 #restart:hover {
     background-color: #25703b;
 }
+
+#score-div {
+    position: absolute;
+    margin-left: 100px;
+}
+
+#x-score, #o-score {
+    font-size: 30px;
+    color: #dff2c4;
+    padding: 10px;
+    letter-spacing: 1px;
+}

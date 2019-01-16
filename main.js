@@ -2,6 +2,8 @@ let show = document.querySelector("#show");
 
 const players = (() => {
     let currentTurn = "X";
+    let xScore = 0;
+    let oScore = 0;
 
     const changeTurn = () => {
         if (currentTurn === "X") {
@@ -16,7 +18,23 @@ const players = (() => {
         return currentTurn;
     }
 
-    return {changeTurn, getCurrentTurn};
+    const increaseScore = (xo) => {
+        if (xo === "X") {
+            xScore++;
+            showScore();
+        }
+        else {
+            oScore++;
+            showScore();
+        }
+    }
+
+    const showScore = () => {
+        document.querySelector("#x-score").innerHTML = "X score: " + xScore;
+        document.querySelector("#o-score").innerHTML = "O score: " + oScore;
+    }
+
+    return {changeTurn, getCurrentTurn, increaseScore};
 })();
 
 const gameBoard = (() => {
@@ -37,9 +55,11 @@ const gameBoard = (() => {
         for (let i = 0; i < win.length; i++) {
                 if (board[win[i][0]] === "X" && board[win[i][1]] === "X" && board[win[i][2]] === "X") {
                     showWinner(i);
+                    players.increaseScore("X");
                 }
                 else if (board[win[i][0]] === "O" && board[win[i][1]] === "O" && board[win[i][2]] === "O") {
                     showWinner(i);
+                    players.increaseScore("0");
                 }
                 else if (board.join("").length  === 9) {
                     showWinner(-1);
