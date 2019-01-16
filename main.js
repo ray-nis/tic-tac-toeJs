@@ -79,6 +79,11 @@ const gameBoard = (() => {
             winner[win[index][2]].style.color = "#42e814";
             document.querySelector("#result").innerText = "X wins";
             document.querySelector("#result-div").style.display = "block";
+            for (let i = 0; i < board.length; i++) {
+                if (board[i].length == 0) {
+                    board[i] = " ";
+                }
+            }
         }
     };
 
@@ -99,7 +104,7 @@ const gameBoard = (() => {
             div.setAttribute("id", i);
             div.setAttribute("class", "n");
             div.addEventListener("click",(e) => {
-                if (board[e.target.id] === "X" || board[e.target.id] === "O") {
+                if (board[e.target.id] === "X" || board[e.target.id] === "O" || board[e.target.id] === " ") {
 
                 }
                 else {
