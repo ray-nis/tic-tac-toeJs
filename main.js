@@ -54,11 +54,11 @@ const gameBoard = (() => {
     const checkWin = () => {
         for (let i = 0; i < win.length; i++) {
                 if (board[win[i][0]] === "X" && board[win[i][1]] === "X" && board[win[i][2]] === "X") {
-                    showWinner(i);
+                    showWinner(i, "X");
                     players.increaseScore("X");
                 }
                 else if (board[win[i][0]] === "O" && board[win[i][1]] === "O" && board[win[i][2]] === "O") {
-                    showWinner(i);
+                    showWinner(i, "O");
                     players.increaseScore("0");
                 }
                 else if (board.join("").length  === 9) {
@@ -67,7 +67,7 @@ const gameBoard = (() => {
         }
     };
 
-    const showWinner = (index) => {
+    const showWinner = (index, player) => {
         if (index === -1) {
             document.querySelector("#result").innerText = "Draw";
             document.querySelector("#result-div").style.display = "block";
@@ -77,7 +77,12 @@ const gameBoard = (() => {
             winner[win[index][0]].style.color = "#42e814";
             winner[win[index][1]].style.color = "#42e814";
             winner[win[index][2]].style.color = "#42e814";
-            document.querySelector("#result").innerText = "X wins";
+            if (player === "O") {
+                document.querySelector("#result").innerText = "O wins";
+            }
+            else {
+                document.querySelector("#result").innerText = "X wins";
+            }
             document.querySelector("#result-div").style.display = "block";
             for (let i = 0; i < board.length; i++) {
                 if (board[i].length == 0) {
