@@ -38,6 +38,7 @@ const players = (() => {
 })();
 
 const gameBoard = (() => {
+    let gameWon = false;
     let board = ["", "", "", "", "", "", "", "", ""];
     let win = [
         [0, 1, 2],
@@ -56,13 +57,16 @@ const gameBoard = (() => {
                 if (board[win[i][0]] === "X" && board[win[i][1]] === "X" && board[win[i][2]] === "X") {
                     showWinner(i, "X");
                     players.increaseScore("X");
+                    gameWon = true;
                 }
                 else if (board[win[i][0]] === "O" && board[win[i][1]] === "O" && board[win[i][2]] === "O") {
                     showWinner(i, "O");
                     players.increaseScore("0");
+                    gameWon = true;
                 }
                 else if (board.join("").length  === 9) {
                     showWinner(-1);
+                    gameWon = true;
                 }
         }
     };
@@ -86,13 +90,14 @@ const gameBoard = (() => {
             document.querySelector("#result-div").style.display = "block";
             for (let i = 0; i < board.length; i++) {
                 if (board[i].length == 0) {
-                    board[i] = " ";
+                    board[i] = "";
                 }
             }
         }
     };
 
     const restart = () => {
+        gameWon = false;
         board = ["", "", "", "", "", "", "", "", ""];
         show.innerHTML = "";
         renderBoard();
@@ -109,7 +114,7 @@ const gameBoard = (() => {
             div.setAttribute("id", i);
             div.setAttribute("class", "n");
             div.addEventListener("click",(e) => {
-                if (board[e.target.id] === "X" || board[e.target.id] === "O" || board[e.target.id] === " ") {
+                if (board[e.target.id] === "X" || board[e.target.id] === "O" || gameWon === true) {
 
                 }
                 else {
